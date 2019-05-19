@@ -1179,7 +1179,7 @@ p.tagline, .address-detail a.tagline {
     background-position: right center; }
 
   .logo img {
-    width: auto; }
+    width: 150px; }
 
   .page {
     position: static;
@@ -1297,6 +1297,9 @@ p.tagline, .address-detail a.tagline {
     margin-bottom: 10px; } }
 @media only screen and (max-width: 414px) {
   h3 {
-    padding-bottom: 25px; } }
+    padding-bottom: 25px; }
+    .side-left, .side-right {
+    background-position: 80% 50%;}  
+  }
 
 /*# sourceMappingURL=style.css.map */
