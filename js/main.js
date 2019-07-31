@@ -11,6 +11,9 @@
         closeTop = $(".close-button.top"),
         mute = $(".mute-action");
 
+    // Show logo on load
+    $('.hero__logo').show();
+
     // Mobile Detection
     function isMobile() {
         return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
