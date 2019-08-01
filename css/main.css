@@ -91,6 +91,8 @@
     width: 70vw;
     display: block;
     margin: 0 auto;
+    border: none;
+    overflow: hidden;
 }
 
 body.project-single .ajaxpage {
