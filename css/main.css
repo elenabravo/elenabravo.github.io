@@ -87,6 +87,12 @@
     clear: both;
 }
 
+.ajaxpage__iframe iframe {
+    width: 70vw;
+    display: block;
+    margin: 0 auto;
+}
+
 body.project-single .ajaxpage {
     position: relative;
     margin-left: auto;
