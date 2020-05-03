@@ -923,14 +923,9 @@ main .meta.name p {
     }
 }
 
-.about__content__full-box .tech-list li {
-    margin: 1.875rem 0;
-}
-
-@media (min-width: 768px) {
-    .about__content__full-box .tech-list li {
-        display: inline;
-        margin: 1.875rem 0.9375rem;
+@media (max-width: 575px) {
+    .about__content__full-box .margin-top-xs {
+        margin-top: 20px;
     }
 }
 
