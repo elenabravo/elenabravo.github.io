@@ -1,4 +1,4 @@
-(function() {
+(function () {
     "use strict";
 
     // Define variables
@@ -72,56 +72,56 @@
             preload: true
         });
 
-        mute.click(function() {
-          if (mute.hasClass("muted")) {
-            mute.removeClass("muted");
-              ion.sound.play("smooth-guitar");
-          } else {
-              ion.sound.stop("smooth-guitar");
-            mute.addClass("muted");
-          }
+        mute.click(function () {
+            if (mute.hasClass("muted")) {
+                mute.removeClass("muted");
+                ion.sound.play("smooth-guitar");
+            } else {
+                ion.sound.stop("smooth-guitar");
+                mute.addClass("muted");
+            }
 
-          return false;
+            return false;
         });
     }
 
     /* =Page Transitions
     -------------------------------------------------------------- */
-    topTrigger.click(function() {
+    topTrigger.click(function () {
         about.removeClass("idle").addClass("active-screen");
         hero.animate({
             top: 20 + "%"
-        }, 500, function() {
+        }, 500, function () {
         });
 
         return false;
     });
 
-    closeTop.click(function() {
+    closeTop.click(function () {
         about.addClass("idle").removeClass("active-screen");
         hero.animate({
             top: 0
-        }, 500, function() {
+        }, 500, function () {
         });
 
         return false;
     });
 
-    bottomTrigger.click(function() {
+    bottomTrigger.click(function () {
         work.removeClass("idle").addClass("active-screen");
         hero.animate({
             top: - 20 + "%"
-        }, 500, function() {
+        }, 500, function () {
         });
 
         return false;
     });
 
-    closeBottom.click(function() {
+    closeBottom.click(function () {
         work.addClass("idle").removeClass("active-screen");
         hero.animate({
             top: 0
-        }, 500, function() {
+        }, 500, function () {
         });
 
         return false;
@@ -135,21 +135,21 @@
     -------------------------------------------------------------- */
     $.fn.sharePopup = function (e, intWidth, intHeight, blnResize) {
 
-      // Prevent default anchor event
-      e.preventDefault();
+        // Prevent default anchor event
+        e.preventDefault();
 
-      // Set values for window
-      var intWidth = intWidth || '500';
-      var intHeight = intHeight || '400';
-      var strResize = (blnResize ? 'yes' : 'no');
+        // Set values for window
+        var intWidth = intWidth || '500';
+        var intHeight = intHeight || '400';
+        var strResize = (blnResize ? 'yes' : 'no');
 
-      // Set title and open popup with focus on it
-      var strTitle = ((typeof this.attr('title') !== 'undefined') ? this.attr('title') : 'Social Share'),
-          strParam = 'width=' + intWidth + ',height=' + intHeight + ',resizable=' + strResize,
-          objWindow = window.open(this.attr('href'), strTitle, strParam).focus();
+        // Set title and open popup with focus on it
+        var strTitle = ((typeof this.attr('title') !== 'undefined') ? this.attr('title') : 'Social Share'),
+            strParam = 'width=' + intWidth + ',height=' + intHeight + ',resizable=' + strResize,
+            objWindow = window.open(this.attr('href'), strTitle, strParam).focus();
     };
 
-    $("a.share").on("click", function(e) {
+    $("a.share").on("click", function (e) {
         $(this).sharePopup(e);
     });
 
@@ -176,16 +176,16 @@
         $(".ajax-section__project-navigation ul").hide();
         $(".ajax-section__project-close a").hide();
 
-        $(window).bind( "hashchange", function() {
+        $(window).bind("hashchange", function () {
             hash = $(window.location).attr("hash");
-            var root = '#!'+ folderName +'/';
+            var root = '#!' + folderName + '/';
             var rootLength = root.length;
 
-            if( hash.substr(0,rootLength) != root ){
+            if (hash.substr(0, rootLength) != root) {
                 return;
             } else {
                 hash = $(window.location).attr("hash");
-                url = hash.replace(/[#\!]/g, '' );
+                url = hash.replace(/[#\!]/g, '');
 
                 portfolioGrid.find(".project.current").children().removeClass("active");
                 portfolioGrid.find(".project.current").removeClass("current");
@@ -193,10 +193,10 @@
                 $(".work__content").find(".work__content__thumbnails.active-folio").removeClass("active-folio");
                 $(".work__content").find(".ajax-section__content.active-ajax, .ajax-section__project-navigation.active-ajax, .ajax-section__project-close.active-ajax, .ajax-section__loader.active-ajax").removeClass("active-ajax");
 
-                portfolioGrid.find('.project a[href="#!' + url + '"]' ).parent().addClass( "current" );
+                portfolioGrid.find('.project a[href="#!' + url + '"]').parent().addClass("current");
                 portfolioGrid.find(".project.current").find('a[href="#!' + url + '"]').addClass("active");
 
-                portfolioGrid.find('.project a[href="#!' + url + '"]' ).parents(".work__content__thumbnails").addClass( "active-folio" );
+                portfolioGrid.find('.project a[href="#!' + url + '"]').parents(".work__content__thumbnails").addClass("active-folio");
                 $(".active-folio").siblings(".ajax-section").children(".ajax-section__content, .ajax-section__project-navigation, .ajax-section__project-close, .ajax-section__loader").addClass("active-ajax");
 
                 var scrollHelper = $(".initial-position").outerHeight();
@@ -205,17 +205,17 @@
                 var exitProject = $(".ajax-section__project-close.active-ajax a");
 
                 /* If url is pasted in address bar and refreshed */
-                if(pageRefresh == true && hash.substr(0,rootLength) ==  root) {
-                    $("#work").stop().animate({scrollTop: 280},800,"easeOutExpo", function(){
+                if (pageRefresh == true && hash.substr(0, rootLength) == root) {
+                    $("#work").stop().animate({ scrollTop: 280 }, 800, "easeOutExpo", function () {
                         loadProject();
                     });
-                /* Clicking on portfolio grid or through project navigation */
-                } else if (pageRefresh == false && hash.substr(0,rootLength) == root) {
-                    $("#work").stop().animate({scrollTop: 280},800,"easeOutExpo", function(){
-                        if(content == false){
+                    /* Clicking on portfolio grid or through project navigation */
+                } else if (pageRefresh == false && hash.substr(0, rootLength) == root) {
+                    $("#work").stop().animate({ scrollTop: 280 }, 800, "easeOutExpo", function () {
+                        if (content == false) {
                             loadProject();
                         } else {
-                            projectContainer.animate({opacity:0,height:wrapperHeight},function(){
+                            projectContainer.animate({ opacity: 0, height: wrapperHeight }, function () {
                                 loadProject();
                             });
                         }
@@ -223,21 +223,21 @@
                         projectNav.fadeOut("100");
                         exitProject.fadeOut("100");
                     });
-                /* Using browser back button without refreshing */
-                } else if (hash=='' && pageRefresh == false || hash.substr(0,rootLength) != root && pageRefresh == false || hash.substr(0,rootLength) != root && pageRefresh == true) {
+                    /* Using browser back button without refreshing */
+                } else if (hash == '' && pageRefresh == false || hash.substr(0, rootLength) != root && pageRefresh == false || hash.substr(0, rootLength) != root && pageRefresh == true) {
                     scrollPosition = hash;
-                    $("#work").stop().animate({scrollTop: scrollPosition + "px"},1000,function(){
+                    $("#work").stop().animate({ scrollTop: scrollPosition + "px" }, 1000, function () {
                         deleteProject();
                     });
                 }
             }
         });
 
-        function loadProject(){
+        function loadProject() {
             var loader = $(".ajax-section__loader.active-ajax");
             loader.show().removeClass("projectError").html('');
 
-            if(!ajaxLoading) {
+            if (!ajaxLoading) {
                 ajaxLoading = true;
 
                 if ($(".work").hasClass("idle")) {
@@ -246,18 +246,18 @@
 
                 var projectContainer = $(".ajax-section__content.active-ajax");
 
-                projectContainer.load( url +' section#ajaxpage', function(xhr, statusText, request){
-                    if(statusText == "success"){
+                projectContainer.load(url + ' section#ajaxpage', function (xhr, statusText, request) {
+                    if (statusText == "success") {
                         ajaxLoading = false;
                         page = $("#ajaxpage");
 
-                        page.imagesLoaded(function() {
+                        page.imagesLoaded(function () {
                             $(".ajaxpage__slider").unslider();
                             hideLoader();
                         });
                     }
 
-                    if(statusText == "error"){
+                    if (statusText == "error") {
                         loader.addClass("projectError").append("<p>Loading Error</p>");
                         loader.find("p").slideDown();
                     }
@@ -265,44 +265,42 @@
             }
         }
 
-        function hideLoader(){
+        function hideLoader() {
             var loader = $(".ajax-section__loader.active-ajax");
 
-            loader.delay(400).fadeOut( function(){
+            loader.delay(400).fadeOut(function () {
                 showProject();
             });
         }
 
-        function showProject(){
+        function showProject() {
             var projectContainer = $(".ajax-section__content.active-ajax");
             var projectNav = $(".ajax-section__project-navigation.active-ajax ul");
             var exitProject = $(".ajax-section__project-close.active-ajax a");
 
             wrapperHeight = projectContainer.children("#ajaxpage").outerHeight() + "px";
 
-            if (content==false){
+            if (content == false) {
                 wrapperHeight = projectContainer.children("#ajaxpage").outerHeight() + "px";
-                projectContainer.animate({opacity:1,height:wrapperHeight}, function(){
+                projectContainer.animate({ opacity: 1, height: wrapperHeight }, function () {
                     scrollPosition = $("#work").scrollTop();
                     projectNav.fadeIn();
                     exitProject.fadeIn();
                     content = true;
-                    $("#work").stop().animate({ scrollTop: 280 });
                 });
             } else {
                 wrapperHeight = projectContainer.children("#ajaxpage").outerHeight() + "px";
-                projectContainer.animate({opacity:1,height:wrapperHeight}, function(){
+                projectContainer.animate({ opacity: 1, height: wrapperHeight }, function () {
                     scrollPosition = $("#work").scrollTop();
                     projectNav.fadeIn();
                     exitProject.fadeIn();
                 });
-                $("#work").stop().animate({ scrollTop: 280 });
             }
 
             projectIndex = portfolioGrid.find(".project.current").index();
-            projectLength = $(".project a").length-1;
+            projectLength = $(".project a").length - 1;
 
-            if(projectIndex == projectLength){
+            if (projectIndex == projectLength) {
                 $(".ajax-section__project-navigation .next a").addClass("disabled");
                 $(".ajax-section__project-navigation .prev a").removeClass("disabled");
             } else if (projectIndex == 0) {
@@ -313,7 +311,7 @@
             }
         }
 
-        function deleteProject(closeURL){
+        function deleteProject(closeURL) {
             var scrollHelper = $(".initial-position").outerHeight();
             var projectContainer = $(".ajax-section__content.active-ajax");
             var projectNav = $(".ajax-section__project-navigation.active-ajax ul");
@@ -322,13 +320,13 @@
             projectNav.fadeOut();
             exitProject.fadeOut();
 
-            if(typeof closeURL!='undefined' && closeURL!='') {
+            if (typeof closeURL != 'undefined' && closeURL != '') {
                 window.location.hash = '#_';
             }
 
-            projectContainer.animate({opacity:0,height:"0px"},800,"easeOutExpo");
+            projectContainer.animate({ opacity: 0, height: "0px" }, 800, "easeOutExpo");
             projectContainer.empty();
-            $("#work").stop().animate({scrollTop: scrollHelper + "px"},600);
+            $("#work").stop().animate({ scrollTop: scrollHelper + "px" }, 600);
 
             $(".work__content").find(".work__content__thumbnails.active-folio").removeClass("active-folio");
             $(".work__content").find(".ajax-section__content.active-ajax, .ajax-section__project-navigation.active-ajax, .ajax-section__project-close.active-ajax, .ajax-section__loader.active-ajax").removeClass("active-ajax");
@@ -336,8 +334,8 @@
             portfolioGrid.find(".project.current").removeClass("current");
         }
 
-        $(".ajax-section__project-navigation .next a").on("click",function () {
-                 
+        $(".ajax-section__project-navigation .next a").on("click", function () {
+
             current = portfolioGrid.find(".project.current");
             next = current.next(".project");
             target = $(next).children("a").attr("href");
@@ -345,17 +343,17 @@
 
             if (next.length === 0) {
                 return false;
-            } 
+            }
 
-            current.removeClass("current"); 
+            current.removeClass("current");
             current.children().removeClass("active");
             next.addClass("current");
             next.children().addClass("active");
-           
+
         });
 
-        $(".ajax-section__project-navigation .prev a").on("click",function () {
-                
+        $(".ajax-section__project-navigation .prev a").on("click", function () {
+
             current = portfolioGrid.find(".project.current");
             prev = current.prev(".project");
             target = $(prev).children("a").attr("href");
@@ -366,19 +364,19 @@
                 return false;
             }
 
-            current.removeClass("current");  
+            current.removeClass("current");
             current.children().removeClass("active");
             prev.addClass("current");
             prev.children().addClass("active");
 
         });
 
-        $(".ajax-section__project-close a").on("click",function (e) {
+        $(".ajax-section__project-close a").on("click", function (e) {
 
-            var loader = $(".ajax-section__loader.active-ajax"); 
-                                
+            var loader = $(".ajax-section__loader.active-ajax");
+
             deleteProject($(this).attr("href"));
-            
+
             portfolioGrid.find(".project.current").children().removeClass("active");
             loader.fadeOut();
 
@@ -389,6 +387,6 @@
     }
 
     initializePortfolio();
-    $(window).trigger( "hashchange" );
+    $(window).trigger("hashchange");
 
 })();
